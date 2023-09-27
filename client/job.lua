@@ -333,6 +333,9 @@ RegisterNetEvent('police:client:ImpoundVehicle', function(fullImpound, price)
     local bodyDamage = math.ceil(GetVehicleBodyHealth(vehicle))
     local engineDamage = math.ceil(GetVehicleEngineHealth(vehicle))
     local totalFuel = exports['LegacyFuel']:GetFuel(vehicle)
+    for i = -1, 4 do
+	if not IsVehicleSeatFree(vehicle, i) then return end
+    end
     if vehicle ~= 0 and vehicle then
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
